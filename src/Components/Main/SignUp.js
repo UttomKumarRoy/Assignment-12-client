@@ -52,7 +52,7 @@ const SignUp = () => {
         .then(data =>{
             //setCreatedUserEmail(email);
             toast.success('Information Saved in database')
-            console.log(data);
+            console.log(data.response);
         })
     }
 const handleGoogleSign=()=>{

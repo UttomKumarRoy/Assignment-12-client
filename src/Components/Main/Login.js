@@ -7,12 +7,12 @@ import { AuthContext } from '../../contexts/UserContext';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     //const [loginUserEmail, setLoginUserEmail] = useState('');
     //const [token] = useToken(loginUserEmail);
     const location = useLocation();
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
@@ -29,11 +29,44 @@ const Login = () => {
                 console.log(user);
                 //setLoginUserEmail(data.email);
                 toast.success('Login successful')
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message);
             });
+    }
+
+
+    const handleGoogleSign=()=>{
+        signInWithGoogle()
+        .then(result=>{
+            const user=result.user;
+            console.log(user);
+            toast('User Login Successfully.')
+            navigate(from, { replace: true });
+            const userType="Buyer";
+            saveUser(user.displayName, user.email,userType );
+    
+        })
+    }
+
+
+    const saveUser = (name, email, userType) =>{
+        const user ={name, email, userType};
+        fetch('http://localhost:8000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            //setCreatedUserEmail(email);
+            toast.success('Information Saved in database')
+            console.log(data);
+        })
     }
 
     return (
@@ -68,7 +101,7 @@ const Login = () => {
                 </form>
                 <p>New to Doctors Portal <Link className='text-secondary' to="/signup">Create new Account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-outline w-full' onClick={handleGoogleSign}>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
