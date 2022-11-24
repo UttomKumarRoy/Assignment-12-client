@@ -28,9 +28,9 @@ import {
   
     //   2. Update Name
   
-    const updateName = (name, photo) => {
+    const updateName = (name) => {
       setLoading(true)
-      return updateProfile(auth.currentUser, { displayName: name ,photoURL: photo})
+      return updateProfile(auth.currentUser, { displayName: name})
     }
   
    
@@ -51,7 +51,7 @@ import {
     }
   
     //5. Login with Password
-    const signin = (email, password) => {
+    const signIn = (email, password) => {
       setLoading(true)
       return signInWithEmailAndPassword(auth, email, password)
     }
@@ -77,7 +77,7 @@ import {
       updateName,
       signInWithGoogle,
       logout,
-      signin,
+      signIn,
       loading,
     }
   

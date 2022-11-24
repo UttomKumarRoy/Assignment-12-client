@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     const handleLogOut = () => {
-        logOut()
+        logout()
             .then(() => { })
             .catch(err => console.log(err));
     }
