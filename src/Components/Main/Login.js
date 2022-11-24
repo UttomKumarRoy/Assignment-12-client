@@ -64,8 +64,8 @@ const Login = () => {
         .then(res => res.json())
         .then(data =>{
             //setCreatedUserEmail(email);
-            toast.success('Information Saved in database')
-            console.log(data);
+            //toast.success(data.response)
+            console.log(data.response);
         })
     }
 

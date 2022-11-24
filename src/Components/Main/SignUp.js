@@ -25,7 +25,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast('User Created Successfully.')
+                //toast('User Created Successfully.')
                 
                 updateName(data.name)
                     .then(() => {
@@ -51,7 +51,7 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data =>{
             //setCreatedUserEmail(email);
-            toast.success('Information Saved in database')
+            toast.success(data.response)
             console.log(data.response);
         })
     }
@@ -60,7 +60,7 @@ const handleGoogleSign=()=>{
     .then(result=>{
         const user=result.user;
         console.log(user);
-        toast('User Created Successfully.')
+        //toast('User Created Successfully.')
         const userType="Buyer";
         saveUser(user.displayName, user.email,userType );
 
