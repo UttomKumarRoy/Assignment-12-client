@@ -1,4 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllBuyers from "../Components/Dashboard/AllBuyers";
+import AllSellers from "../Components/Dashboard/AllSellers";
+import ReportedItems from "../Components/Dashboard/ReportedItems";
+import Welcome from "../Components/Dashboard/Welcome";
 import Blog from "../Components/Main/Blog";
 import Error from "../Components/Main/Error";
 import Home from "../Components/Main/Home";
@@ -43,7 +47,19 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element:<Blog></Blog>
+                element:<Welcome></Welcome>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element:<AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allBuyers',
+                element:<AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/reportedItems',
+                element:<ReportedItems></ReportedItems>
             },
         ]
     }

@@ -35,9 +35,9 @@ const DashboardLayout = () => {
                         <li className='text-green-800 bg-black'><Link to="/dashboard">My DashBoard</Link></li>
                         {
                             userType==="Admin" && <>
-                                <li><Link to="/dashboard/allusers">All Sellers</Link></li>
-                                <li><Link to="/dashboard/adddoctor">All Buyers</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Reported Items</Link></li>
+                                <li><Link to="/dashboard/allSellers">All Sellers</Link></li>
+                                <li><Link to="/dashboard/allBuyers">All Buyers</Link></li>
+                                <li><Link to="/dashboard/reportedItems">Reported Items</Link></li>
                             </>
                         }
                          {
