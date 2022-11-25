@@ -4,7 +4,9 @@ import Error from "../Components/Main/Error";
 import Home from "../Components/Main/Home";
 import Login from "../Components/Main/Login";
 import SignUp from "../Components/Main/SignUp";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 //import Home from "../../Pages/Home/Home/Home";
 //import Login from "../../Pages/Login/Login";
 //import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
@@ -34,6 +36,17 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <Error></Error>,
+        children: [
+            {
+                path: '/dashboard',
+                element:<Blog></Blog>
+            },
+        ]
+    }
     
 ])
 
