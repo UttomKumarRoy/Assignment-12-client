@@ -55,7 +55,7 @@ const AddAProduct = () => {
                 <h2 className='text-xl text-center'>Add A Product</h2>
                 <form onSubmit={handleSubmit(handleAddProduct)}>
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-48 max-w-xs">
                         <label className="label"> <span className="label-text">Product Name</span></label>
                         <input type="text" {...register("name", {
                             required: "Product Name is Required"
