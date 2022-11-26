@@ -47,9 +47,9 @@ const DashboardLayout = () => {
                         }
                          {
                             userType==="Seller" && <>
-                                <li><Link to="/dashboard/allusers">Add a Product</Link></li>
-                                <li><Link to="/dashboard/adddoctor">My Products</Link></li>
-                                <li><Link to="/dashboard/managedoctors">My Buyers</Link></li>
+                                <li><Link to="/dashboard/addProduct">Add a Product</Link></li>
+                                <li><Link to="/dashboard/myProducts">My Products</Link></li>
+                                <li><Link to="/dashboard/myBuyers">My Buyers</Link></li>
                             </>
                         }
 
