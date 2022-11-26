@@ -1,14 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 
 const AddAProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [addProductError, setAddProductError] = useState('');
+    const {user}=useContext(AuthContext)
+    const navigate = useNavigate();
+    //const [addProductError, setAddProductError] = useState('');
+    
 
     const handleAddProduct =(data)=>{
     console.log(data)
+    const product={
+        name: data.name,
+        price: data.price,
+        conditionType: data.conditionType,
+        mobile:data.mobile,
+        location:data.location,
+        productCategory:data.productCategory,
+        description:data.description,
+        originalPrice:data.originalPrice,
+        year:data.year,
+        email:user?.email,
+        status:"available"
     }
 
+       
+
+   
+    
+    
+        fetch('http://localhost:8000/products',{
+            method:'POST',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(product) })
+            .then(res => res.json())
+            .then(data =>{
+            //setCreatedUserEmail(email);
+            toast.success("Product added successfully")
+            navigate("/dashboard/myProducts");
+             console.log(data);
+         })
+ 
+         
+        
+}
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-2'>
@@ -91,7 +131,7 @@ const AddAProduct = () => {
                     </div>
 
                     <input className='btn btn-accent w-full mt-4' value="Add Product" type="submit" />
-                    {addProductError && <p className='text-red-600'>{addProductError}</p>}
+                    {/*{addProductError && <p className='text-red-600'>{addProductError}</p>}*/}
                 </form>
                
 
