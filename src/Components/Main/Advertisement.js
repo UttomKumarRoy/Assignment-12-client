@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import AdvertiseProduct from './AdvertiseProduct';
 
 const Advertisement = () => {
+const [products, setProducts]=useState([])
+    useEffect(()=>{
+    fetch('http://localhost:8000/products')
+    .then(res=>res.json())
+    .then(data=>setProducts(data))
+    .catch(err=>console.log(err))
+
+    },[])
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-            <div className="card-body">
-             <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
+            {products.length===0?"":<>
+            <h2 className='text-center text-2xl'>Advertisement Section</h2> <br /> <br />
+            
+            <div className='grid gap-10 lg:grid-cols-3'>
+                {products.map((product,i)=><AdvertiseProduct product={product} key={i}></AdvertiseProduct>)}
+            </div>
+            
+            
+            </>}
+            
+            
         </div>
     );
 };
