@@ -14,6 +14,7 @@ const AddAProduct = () => {
     console.log(data)
     const product={
         name: data.name,
+        photo:data.photo,
         price: data.price,
         conditionType: data.conditionType,
         mobile:data.mobile,
@@ -23,7 +24,9 @@ const AddAProduct = () => {
         originalPrice:data.originalPrice,
         year:data.year,
         email:user?.email,
-        status:"available"
+        sellerName:user?.displayName,
+        status:"available",
+        postTime:new Date()
     }
 
        
@@ -31,7 +34,7 @@ const AddAProduct = () => {
    
     
     
-        fetch('https://laptop-reseller-server.vercel.app/products',{
+        fetch('http://localhost:8000/products',{
             method:'POST',
             headers:{
                 "content-type":"application/json"
@@ -49,17 +52,25 @@ const AddAProduct = () => {
         
 }
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='h-[900px] flex justify-center items-center'>
             <div className='w-96 p-2'>
                 <h2 className='text-xl text-center'>Add A Product</h2>
                 <form onSubmit={handleSubmit(handleAddProduct)}>
 
-                    <div className="form-control w-48 max-w-xs">
+                    <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Product Name</span></label>
                         <input type="text" {...register("name", {
                             required: "Product Name is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                    </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Product Photo URL</span></label>
+                        <input type="text" {...register("photo", {
+                            required: "Product Photo URL is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.photo && <p className='text-red-500'>{errors.photo.message}</p>}
                     </div>
 
                     <div className="form-control w-full max-w-xs">
@@ -101,7 +112,6 @@ const AddAProduct = () => {
                         <option value="Asus">Asus</option>
                         <option value="Lenovo">Lenovo</option>
                         <option value="Dell">Dell</option>
-                        <option value="HP">HP</option>
                     </select>
                     </div>
 

@@ -6,14 +6,14 @@ const AllSellers = () => {
     const { data: sellers = [], refetch} = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch(`https://laptop-reseller-server.vercel.app/sellers`);
+            const res = await fetch(`http://localhost:8000/sellers`);
             const data = await res.json();
             return data
         }
     });
 
-const handleDeleteSeller = seller => {
-        fetch(`https://laptop-reseller-server.vercel.app/sellers/${seller._id}`, {
+    const handleDeleteSeller = seller => {
+        fetch(`http://localhost:8000/sellers/${seller._id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -21,6 +21,20 @@ const handleDeleteSeller = seller => {
             if(data.deletedCount > 0){
                 refetch();
                 toast.success(`Seller ${seller.name} deleted successfully`)
+            }
+        })
+    }
+
+
+    const makeVerifiedSeller = seller => {
+        fetch(`http://localhost:8000/sellers/${seller._id}`, {
+            method: 'PUT'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                refetch();
+                toast.success(`Seller ${seller.name} made verified successfully`)
             }
         })
     }
@@ -35,6 +49,7 @@ const handleDeleteSeller = seller => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Delete</th>
+                <th>Verification</th>
             </tr>
             </thead>
             <tbody>
@@ -44,6 +59,7 @@ const handleDeleteSeller = seller => {
                     <td>{seller.name}</td>
                     <td>{seller.email}</td>
                     <td><button onClick={()=>handleDeleteSeller(seller)} className='btn btn-xs btn-danger'>Delete</button></td>
+                    <td>{seller?.isVerified?"verified":<button onClick={()=>makeVerifiedSeller(seller)} className='btn btn-xs btn-danger'>Make Verified</button>}</td>
                 </tr>)
             }
             
