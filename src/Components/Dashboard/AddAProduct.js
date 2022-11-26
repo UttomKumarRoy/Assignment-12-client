@@ -8,7 +8,6 @@ const AddAProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {user}=useContext(AuthContext)
     const navigate = useNavigate();
-    //const [addProductError, setAddProductError] = useState('');
     
 
     const handleAddProduct =(data)=>{
@@ -32,7 +31,7 @@ const AddAProduct = () => {
    
     
     
-        fetch('http://localhost:8000/products',{
+        fetch('https://laptop-reseller-server.vercel.app/products',{
             method:'POST',
             headers:{
                 "content-type":"application/json"

@@ -15,7 +15,7 @@ const DashboardLayout = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:8000/users/${user?.email}`)
+        fetch(`https://laptop-reseller-server.vercel.app/users/${user?.email}`)
         .then(res=>res.json())
         .then(data=>setUserType(data.userType))
         .catch(err=>console.log(err))

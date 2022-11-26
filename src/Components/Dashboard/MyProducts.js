@@ -4,29 +4,21 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/UserContext';
 
 const MyProducts = () => {
-    //const [products, setProducts]=useState([])
-    //const [loading, setLoading]=useState(false)
+    
     const {user}=useContext(AuthContext)
     const { data: products = [], refetch} = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:8000/products/${user?.email}`);
+            const res = await fetch(`https://laptop-reseller-server.vercel.app/products/${user?.email}`);
             const data = await res.json();
             return data
         }
     });
     
-    //useEffect(()=>{
-        
-    //        fetch(`http://localhost:8000/products/${user?.email}`  )
-    //        .then(res=>res.json())
-    //        .then(data=>setProducts(data))
-    //        .catch(err=>console.log(err))
-
-    //},[user?.email, ])
+    
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:8000/products/${product._id}`, {
+        fetch(`https://laptop-reseller-server.vercel.app/products/${product._id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
