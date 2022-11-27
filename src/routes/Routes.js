@@ -6,9 +6,12 @@ import MyBuyers from "../Components/Dashboard/MyBuyers";
 import MyProducts from "../Components/Dashboard/MyProducts";
 import ReportedItems from "../Components/Dashboard/ReportedItems";
 import Welcome from "../Components/Dashboard/Welcome";
+import ASUS from "../Components/Main/ASUS";
 import Blog from "../Components/Main/Blog";
+import Dell from "../Components/Main/Dell";
 import Error from "../Components/Main/Error";
 import Home from "../Components/Main/Home";
+import Lenovo from "../Components/Main/Lenovo";
 import Login from "../Components/Main/Login";
 import SignUp from "../Components/Main/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/asus',
+                element: <PrivateRoute><ASUS></ASUS></PrivateRoute>
+            },
+            {
+                path: '/lenovo',
+                element: <PrivateRoute><Lenovo></Lenovo></PrivateRoute>
+            },
+            {
+                path: '/dell',
+                element: <PrivateRoute><Dell></Dell></PrivateRoute>
             }
         ]
     },
