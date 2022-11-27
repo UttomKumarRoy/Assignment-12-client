@@ -42,7 +42,7 @@ const DashboardLayout = () => {
                         }
                          {
                             userType==="Buyer" && <>
-                                <li><Link to="/dashboard/orders">My Orders</Link></li>
+                                <li><Link to="/dashboard/myOrders">My Orders</Link></li>
                             </>
                         }
                          {
