@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AdvertiseProduct from './AdvertiseProduct';
+import BookingModal from './BookingModal';
 
 const ASUS = () => {
     const [products,setProducts]=useState([])
+    const [product, setProduct]=useState()
     useEffect(()=>{
         fetch('http://localhost:8000/asus')
     .then(res=>res.json())
@@ -11,7 +13,10 @@ const ASUS = () => {
     },[])
     return (
         <div className='grid gap-10 lg:grid-cols-3'>
-            {products.map((product,i)=><AdvertiseProduct product={product} key={i}></AdvertiseProduct>)}
+            {products.map((product,i)=><AdvertiseProduct setProduct={setProduct}  product={product} key={i}></AdvertiseProduct>)}
+            {
+                product && <BookingModal product={product}></BookingModal>
+            }
         </div>
     );
 };
