@@ -10,7 +10,7 @@
 ### Technologies used in this project
 - React, 
 - React-Router-DOM, 
-- React-Hot-Toast, React-Day-Picker and Date-fns, 
+- React-Hot-Toast, 
 - React Query and React Hook Form,
 - Firebase Authentication and Hoisting, 
 - Tailwind CSS and DaisyUI, 
@@ -18,3 +18,6 @@
 - Express,
 - Stripe payment,
 - Vercel Deploy  and so on.
+### Admin Email and Password
+- adminEmail: admin@gmail.com
+- adminPassword: Admin1@pass

@@ -7,20 +7,20 @@ const AdvertiseProduct = ({product}) => {
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={photo} alt="Laptop" /></figure>
-            <div className="card-body">
-             <h2 className="card-title">{name}!</h2>
-                <p>Description: {description}</p>
-                <p>Price: {price}</p>
-                <p>Location: {location}</p>
-                <p>Original Price: {originalPrice}</p>
-                <p>Seller Name: {sellerName}</p>
-                <p>Posting Time: {postTime}</p>
-                <p>Year of Use: {year}</p>
-                <div className="card-actions justify-end">
-            <button className="btn btn-primary">Book Now</button>
-    </div>
-  </div>
-</div>
+                <div className="card-body">
+                    <h2 className="card-title">{name}!</h2>
+                    <p>Description: {description}</p>
+                    <p>Price: {price}</p>
+                    <p>Location: {location}</p>
+                    <p>Original Price: {originalPrice}</p>
+                    <p>Seller Name: {sellerName}</p>
+                    <p>Posting Time: {postTime}</p>
+                    <p>Year of Use: {year}</p>
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

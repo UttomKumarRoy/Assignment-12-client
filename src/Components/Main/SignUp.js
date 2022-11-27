@@ -106,12 +106,12 @@ const handleGoogleSign=()=>{
 
                     </div>
 
-                    <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
+                    <input className='btn btn-secondary w-full mt-4' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full' onClick={handleGoogleSign}>CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-primary w-full' onClick={handleGoogleSign}>Sign Up with Google</button>
 
             </div>
         </div>
