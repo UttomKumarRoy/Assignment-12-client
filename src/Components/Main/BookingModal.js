@@ -43,7 +43,7 @@ const BookingModal = ({product}) => {
         })
         .then(res=>res.json())
         .then(data=>{
-            toast.success("Booking Completed")
+            toast.success(data.response)
             console.log(data);
             form.reset()
              navigate('/dashboard/myOrders')
