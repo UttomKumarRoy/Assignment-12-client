@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import blue from './blue.png';
 
 const AllSellers = () => {
     const { data: sellers = [], refetch} = useQuery({
@@ -56,7 +57,7 @@ const AllSellers = () => {
             {
                 sellers.map((seller, i) =><tr key={seller._id}>
                     <th>{i+1}</th>
-                    <td>{seller.name}</td>
+                    <td>{seller.isVerified?<div className='flex'><p>{seller.name}</p><img className='h-[30px]' src={blue} alt='blue tick'/></div>:seller.name}</td>
                     <td>{seller.email}</td>
                     <td><button onClick={()=>handleDeleteSeller(seller)} className='btn btn-xs btn-danger'>Delete</button></td>
                     <td>{seller?.isVerified?"verified":<button onClick={()=>makeVerifiedSeller(seller)} className='btn btn-xs btn-danger'>Make Verified</button>}</td>

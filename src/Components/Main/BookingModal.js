@@ -14,7 +14,7 @@ const BookingModal = ({product}) => {
         if(!user){
             navigate('/login')
             toast.success('Please login first to book any item')
-    
+            return
         }
         const form=event.target;
         const uName=form.name.value;
