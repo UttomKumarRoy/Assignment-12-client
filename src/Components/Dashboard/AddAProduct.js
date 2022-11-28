@@ -42,7 +42,6 @@ const AddAProduct = () => {
             body:JSON.stringify(product) })
             .then(res => res.json())
             .then(data =>{
-            //setCreatedUserEmail(email);
             toast.success("Product added successfully")
             navigate("/dashboard/myProducts");
              console.log(data);

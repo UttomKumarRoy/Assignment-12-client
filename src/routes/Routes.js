@@ -18,10 +18,7 @@ import SignUp from "../Components/Main/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute";
-//import Home from "../../Pages/Home/Home/Home";
-//import Login from "../../Pages/Login/Login";
-//import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
-//import SignUp from "../../Pages/SignUp/SignUp";
+
 
 const router = createBrowserRouter([
     {

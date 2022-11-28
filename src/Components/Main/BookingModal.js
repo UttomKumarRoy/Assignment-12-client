@@ -19,8 +19,6 @@ const BookingModal = ({product}) => {
         const form=event.target;
         const uName=form.name.value;
         const email=form.email.value;
-        //const productName=form.productName.value;
-        //const price=form.price.value;
         const phone=form.phone.value;
         const meetingLocation=form.meetingLocation.value;
         const booking={
@@ -34,7 +32,7 @@ const BookingModal = ({product}) => {
             meetingLocation
         }
 
-        fetch('http://localhost:8000/bookings',{
+        fetch('https://laptop-reseller-server.vercel.app/bookings',{
             method:"POST",
             headers:{
                 "content-type":"application/json"

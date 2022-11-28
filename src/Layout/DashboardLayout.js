@@ -1,18 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-//import { getRole } from '../Components/Dashboard/users';
 import Navbar from '../Components/Main/Navbar';
 import { AuthContext } from '../contexts/UserContext';
-//import useAdmin from '../hooks/useAdmin';
-//import Navbar from '../Pages/Shared/Navbar/Navbar';
+
 
 const DashboardLayout = () => {
     const [userType, setUserType]=useState();
     const { user } = useContext(AuthContext);
-    //const [isAdmin] = useAdmin(user?.email)
-
-
-
 
     useEffect(()=>{
         fetch(`https://laptop-reseller-server.vercel.app/users/${user?.email}`)
@@ -20,7 +14,6 @@ const DashboardLayout = () => {
         .then(data=>setUserType(data.userType))
         .catch(err=>console.log(err))
     },[user?.email])
-    //getRole()
     return (
         <div>
             <Navbar></Navbar>
