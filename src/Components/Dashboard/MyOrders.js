@@ -1,41 +1,46 @@
-//import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/UserContext';
 
 const MyOrders = () => {
 
-    //const { data: bookings = [], refetch} = useQuery({
-    //    queryKey: ['allBuyers'],
-    //    queryFn: async () => {
-    //        const res = await fetch(`http://localhost:8000/bookings`);
-    //        const data = await res.json();
-    //        return data
-    //    }
-    //});
+    const{user}=useContext(AuthContext)
+
+    const { data: bookings = []} = useQuery({
+        queryKey: ['allBuyers'],
+        queryFn: async () => {
+            const res = await fetch(`https://laptop-reseller-server.vercel.app/bookings/${user?.email}`);
+            const data = await res.json();
+            return data
+        }
+    });
     return (
         <div>
             <h2 className="text-3xl">All Bookings</h2>
         <div className="overflow-x-auto">
-            {/*<table className="table w-full">
+            <table className="table w-full">
             <thead>
             <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Delete</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Pay</th>
             </tr>
             </thead>
             <tbody>
             {
-                bookings.map((buyer, i) =><tr key={buyer._id}>
+                bookings.map((booking, i) =><tr key={booking._id}>
                     <th>{i+1}</th>
-                    <td>{buyer.name}</td>
-                    <td>{buyer.email}</td>
-                    <td><button onClick={()=>handleDeleteBuyer(buyer)} className='btn btn-xs btn-danger'>Delete</button></td>
+                    <td><img className='h-[50px]' src={booking.photo} alt='pic'/></td>
+                    <td>{booking.productName}</td>
+                    <td>{booking.price}</td>
+                    <td><button className='btn btn-xs btn-danger'>Pay</button></td>
                 </tr>)
             }
             
             </tbody>
-            </table>*/}
+            </table>
         </div>
     </div>
 

@@ -7,7 +7,7 @@ const Dell = () => {
     const [product, setProduct]=useState()
 
     useEffect(()=>{
-        fetch('http://localhost:8000/dell')
+        fetch('https://laptop-reseller-server.vercel.app/dell')
     .then(res=>res.json())
     .then(data=>setProducts(data))
     .catch(err=>console.log(err))

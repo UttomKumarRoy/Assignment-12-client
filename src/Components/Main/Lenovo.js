@@ -7,7 +7,7 @@ const Lenovo = () => {
     const [product, setProduct]=useState()
 
     useEffect(()=>{
-        fetch('http://localhost:8000/lenovo')
+        fetch('https://laptop-reseller-server.vercel.app/lenovo')
     .then(res=>res.json())
     .then(data=>setProducts(data))
     .catch(err=>console.log(err))

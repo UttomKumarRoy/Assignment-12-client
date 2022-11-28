@@ -5,12 +5,12 @@ const [buyers, setBuyers]=useState([])
 const [sellers, setSellers]=useState([])
 
 useEffect(()=>{
-    fetch('http://localhost:8000/buyers')
+    fetch('https://laptop-reseller-server.vercel.app/buyers')
     .then(res=>res.json())
     .then(data=>setBuyers(data))
     .catch(err=>console.log(err))
     
-    fetch('http://localhost:8000/sellers')
+    fetch('https://laptop-reseller-server.vercel.app/sellers')
     .then(res=>res.json())
     .then(data=>setSellers(data))
     .catch(err=>console.log(err))

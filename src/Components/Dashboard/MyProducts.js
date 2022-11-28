@@ -9,7 +9,7 @@ const MyProducts = () => {
     const { data: products = [], refetch} = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:8000/products/${user?.email}`);
+            const res = await fetch(`https://laptop-reseller-server.vercel.app/products/${user?.email}`);
             const data = await res.json();
             return data
         }
@@ -18,7 +18,7 @@ const MyProducts = () => {
     
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:8000/products/${product._id}`, {
+        fetch(`https://laptop-reseller-server.vercel.app/products/${product._id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -32,7 +32,7 @@ const MyProducts = () => {
     
     
     const makeAdvertise = product => {
-        fetch(`http://localhost:8000/products/${product._id}`, {
+        fetch(`https://laptop-reseller-server.vercel.app/products/${product._id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -52,6 +52,7 @@ const MyProducts = () => {
             <thead>
             <tr>
                 <th></th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Status</th>
@@ -63,6 +64,7 @@ const MyProducts = () => {
             {
                 products.map((product, i) =><tr key={product._id}>
                     <th>{i+1}</th>
+                    <td><img className='h-[50px]' src={product.photo} alt='pic'/></td>
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.status}</td>

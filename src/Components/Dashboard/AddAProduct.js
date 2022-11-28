@@ -34,7 +34,7 @@ const AddAProduct = () => {
    
     
     
-        fetch('http://localhost:8000/products',{
+        fetch('https://laptop-reseller-server.vercel.app/products',{
             method:'POST',
             headers:{
                 "content-type":"application/json"
@@ -75,7 +75,7 @@ const AddAProduct = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Product Price</span></label>
-                        <input type="text" {...register("price", {
+                        <input type="number" {...register("price", {
                             required: "Product Price is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
@@ -125,7 +125,7 @@ const AddAProduct = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Original Price</span></label>
-                        <input type="text" {...register("originalPrice", {
+                        <input type="number" {...register("originalPrice", {
                             required: "Original Price is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.originalPrice && <p className='text-red-500'>{errors.originalPrice.message}</p>}
@@ -140,7 +140,6 @@ const AddAProduct = () => {
                     </div>
 
                     <input className='btn btn-accent w-full mt-4' value="Add Product" type="submit" />
-                    {/*{addProductError && <p className='text-red-600'>{addProductError}</p>}*/}
                 </form>
                
 

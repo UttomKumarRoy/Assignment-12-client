@@ -6,7 +6,7 @@ const ASUS = () => {
     const [products,setProducts]=useState([])
     const [product, setProduct]=useState()
     useEffect(()=>{
-        fetch('http://localhost:8000/asus')
+        fetch('https://laptop-reseller-server.vercel.app/asus')
     .then(res=>res.json())
     .then(data=>setProducts(data))
     .catch(err=>console.log(err))
