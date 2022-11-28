@@ -17,16 +17,16 @@ const BookingModal = ({product}) => {
     
         }
         const form=event.target;
-        const name=form.name.value;
+        const uName=form.name.value;
         const email=form.email.value;
-        const productName=form.productName.value;
-        const price=form.price.value;
+        //const productName=form.productName.value;
+        //const price=form.price.value;
         const phone=form.phone.value;
         const meetingLocation=form.meetingLocation.value;
         const booking={
-            name,
+            name:uName,
             email,
-            productName,
+            productName:name,
             photo,
             price,
             productID:_id,
@@ -34,7 +34,7 @@ const BookingModal = ({product}) => {
             meetingLocation
         }
 
-        fetch('https://laptop-reseller-server.vercel.app/bookings',{
+        fetch('http://localhost:8000/bookings',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -62,12 +62,10 @@ const BookingModal = ({product}) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="book-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">Booking Information for <span className='text-primary'>{name}</span> </h3>
+                    <h3 className="text-lg font-bold">Booking Information for <span className='text-primary'>{name} at {price} tk</span> </h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
-                        <input name="productName" type="text" defaultValue={name} disabled placeholder="Product Name" className="input w-full input-bordered" />
-                        <input name="price" type="text" defaultValue={price} disabled placeholder="Price" className="input w-full input-bordered" />
                         <input name="phone" type="number" placeholder="Phone Number" className="input w-full input-bordered" required />
                         <input name="meetingLocation" type="text" placeholder="Meeting Location" className="input w-full input-bordered" required />
                         <br />

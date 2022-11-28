@@ -11,9 +11,13 @@ const [products, setProducts]=useState([])
     .then(data=>setProducts(data))
     .catch(err=>console.log(err))
 
-    },[])
+    },[product])
     return (
         <div>
+
+            {
+                product && <BookingModal product={product}></BookingModal>
+            }
             {products.length===0?"":<>
             <h2 className='text-center text-2xl'>Advertisement Section</h2> <br /> <br />
             
@@ -23,9 +27,7 @@ const [products, setProducts]=useState([])
             
             
             </>}
-            {
-                product && <BookingModal product={product}></BookingModal>
-            }
+           
             
         </div>
     );
