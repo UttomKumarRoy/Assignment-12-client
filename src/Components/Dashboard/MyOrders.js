@@ -24,7 +24,7 @@ const MyOrders = () => {
         .then(data => {
             if(data.deletedCount > 0){
                 refetch();
-                toast.success(`Product ${booking.name} deleted successfully`)
+                toast.success(`Booking Product deleted successfully`)
             }
         })
     }
